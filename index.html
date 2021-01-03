@@ -50,22 +50,7 @@
             </ul>
           </div>
       </div>
-  <p align="center">
-    <script>
-
-function fakecounter(){
-
-//decrease/increase counter value (depending on perceived popularity of your site!)
-var decrease_increase=50000
-
-var counterdate=new Date()
-var currenthits=counterdate.getTime().toString()
-currenthits=parseInt(currenthits.substring(2,currenthits.length-4))+decrease_increase
-
-document.write("You're Visitor No. # <b>"+currenthits+"</b> To My Site!")
-}
-fakecounter()
-</script>
+  <p align="center"><font size="-1">
     <script>
       function nameDefined(ckie,nme)
 {
@@ -130,6 +115,16 @@ function readCookie() {
 }
 insertCounter();
     </script>
+    <script>
+function fakecounter(){
+var decrease_increase=1
+var counterdate=new Date()
+var currenthits=counterdate.getTime().toString()
+currenthits=parseInt(currenthits.substring(2,currenthits.length-4))+decrease_increase
+document.write("You're Visitor No. # <b>"+currenthits+"</b> To My Site!")
+}
+fakecounter()
+</script>
   </p>
 <p align="center"><font face="mono" size="-2">© 2020-2021<br>All Right Reserved ®</font></p>
   </body>
