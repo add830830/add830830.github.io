@@ -52,17 +52,68 @@
       </div>
   <p align="center">
     <script>
-function fakecounter(){
-
-var decrease_increase=5
-
-var counterdate=new Date()
-var currenthits=counterdate.getTime().toString()
-currenthits=parseInt(currenthits.substring(2,currenthits.length-4))+decrease_increase
-
-document.write("You are visitor #<b>"+currenthits+"</b> to my site!")
+      function nameDefined(ckie,nme)
+{
+   var splitValues
+   var i
+   for (i=0;i<ckie.length;++i)
+   {
+      splitValues=ckie[i].split("=")
+      if (splitValues[0]==nme) return true
+   }
+   return false
 }
-fakecounter() 
+
+function delBlanks(strng)
+{
+   var result=""
+   var i
+   var chrn
+   for (i=0;i<strng.length;++i) {
+      chrn=strng.charAt(i)
+      if (chrn!=" ") result += chrn
+   }
+   return result
+}
+function getCookieValue(ckie,nme)
+{
+   var splitValues
+   var i
+   for(i=0;i<ckie.length;++i) {
+      splitValues=ckie[i].split("=")
+      if(splitValues[0]==nme) return splitValues[1]
+   }
+   return ""
+}
+function insertCounter() {
+ readCookie()
+ displayCounter()
+}
+ function displayCounter() {
+ document.write('<H3 ALIGN="CENTER">')
+ document.write("You've visited this page ")
+ if(counter==1) document.write("the first time.")
+ else document.write(counter+" times.")
+ document.writeln('</H3>')
+ }
+function readCookie() {
+ var cookie=document.cookie
+ counter=0
+ var chkdCookie=delBlanks(cookie)  //are on the client computer
+ var nvpair=chkdCookie.split(";")
+ if(nameDefined(nvpair,"pageCount"))
+ counter=parseInt(getCookieValue(nvpair,"pageCount"))
+ ++counter
+ var futdate = new Date()
+ var expdate = futdate.getTime()
+ expdate += 3600000 * 24 *30  //expires in 1 hour
+ futdate.setTime(expdate)
+
+ var newCookie="pageCount="+counter
+ newCookie += "; expires=" + futdate.toGMTString()
+ window.document.cookie=newCookie
+}
+insertCounter();
     </script>
   </p>
 <p align="center"><font face="mono" size="-2">© 2020-2021<br>All Right Reserved ®</font></p>
