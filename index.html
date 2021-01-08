@@ -55,6 +55,52 @@
           </div>
       </div>
   <div align="center">
+<p>Views</p>
+<h1 id="count">0</h1>
+<Style>
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #192a56;
+	color: #fff;
+	font-family: 'Muli', sans-serif;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+}
+
+h1 {
+	font-size: 50px;
+	margin: 0;
+}
+
+p {
+	color: rgba(255, 255, 255, 0.8);
+	letter-spacing: 2px;
+	margin: 0;
+}
+</style>
+<script>
+const count = document.getElementById('count');
+
+updateVisitCount();
+
+function updateVisitCount(){
+  fetch('https://api.countapi.xyz/update/danielazocardev/codepen/?amount=1')
+    .then(res => res.json())
+    .then(res => {
+      count.innerHTML = res.value
+  });
+}
+</script>
     <img src="https://www.webfreecounter.com/hit.php?id=guunaoac&nd=6&style=71" height="23.8" width="100">
     <font size="-1">
     
